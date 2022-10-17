@@ -6,8 +6,17 @@
         <title>Datetime superapp</title> 
         <script src="./src/main.js" type="module"></script> 
     </head> 
-    <body> 
-        <form id="datecalc"> 
+    <body>
+    <div id="switcher">
+        <input type="radio" checked id="section1"
+                name="switch" value="datecalc">
+        <label for="section1">Калькулятор дат</label>
+
+        <input type="radio" id="section2"
+                name="switch" value="timer">
+        <label for="section2">Таймер</label>
+    </div>
+        <form id="datecalc">
             <h3>Калькулятор дат</h3> 
             <label> 
                 <strong>Первая дата:</strong> 
@@ -19,6 +28,16 @@
             </label> 
             <button type="submit">Расчитать промежуток</button> 
             <p id="datecalc__result"></p> 
-        </form> 
+        </form>
+        <div id="timer" >
+            <h3>Таймер</h3>
+            <label>
+                <strong>Секунды:</strong>
+                <input min="0" step="1" type="number" name="seconds" id="seconds">
+            </label>
+            <button>Старт</button>
+            <button>Стоп</button>
+        </div>
+
     </body> 
 </html>

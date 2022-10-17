@@ -1,8 +1,14 @@
 import { diffDates, diffToHtml } from "./datecalc.js";
 import { formatError } from "./utils.js";
+import { switcher } from "./switch.js"
 
+const radioButtons = document.getElementById("switcher");
+const timerDiv = document.getElementById("timer");
 const dateCalcForm = document.getElementById("datecalc"); 
 const dateCalcResult = document.getElementById("datecalc__result"); 
+
+switcher(radioButtons, [dateCalcForm, timerDiv])
+
 
 dateCalcForm.addEventListener("submit", handleCalcDates); 
 
