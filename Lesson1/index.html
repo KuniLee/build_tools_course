@@ -29,14 +29,14 @@
             <button type="submit">Расчитать промежуток</button> 
             <p id="datecalc__result"></p> 
         </form>
-        <div id="timer" >
+        <div id="timer" hidden>
             <h3>Таймер</h3>
             <label>
                 <strong>Секунды:</strong>
-                <input min="0" step="1" type="number" name="seconds" id="seconds">
+                <input type="time" value="00:00:00" step=1 name="seconds" id="timerTime">
             </label>
-            <button>Старт</button>
-            <button>Стоп</button>
+            <button id="btnStart">Старт</button>
+            <button id="btnStop">Стоп</button>
         </div>
 
     </body> 
