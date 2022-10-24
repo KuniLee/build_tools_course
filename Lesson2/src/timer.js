@@ -1,15 +1,19 @@
-import {Duration} from "./luxon.js";
-import './howler.js';
+import {Duration} from "luxon";
+import {Howl} from 'howler';
+
+import tick from "./media/tik-tak.mp3"
+import alarm from "./media/alarm.mp3"
+
 
 
 const soundTick = new Howl({
-    src: ['src/media/tik-tak.mp3'],
+    src: tick,
     html5: true,
     volume: 0.3,
     loop:true
 });
 const alarmSound = new Howl({
-    src: ['src/media/alarm.mp3'],
+    src: alarm,
     html5: true,
     volume: 0.3,
 });
