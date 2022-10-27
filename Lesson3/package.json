@@ -8,13 +8,14 @@
     "watch": "webpack --mode development --watch",
     "serve": "webpack serve --mode development --open --progress"
   },
-   "author": "",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.2.2",
     "html-webpack-plugin": "^5.5.0",
+    "img-optimize-loader": "^1.0.7",
     "mini-css-extract-plugin": "^2.6.1",
     "sass": "^1.55.0",
     "sass-loader": "^13.1.0",

@@ -56,16 +56,31 @@ const config = {
                 test: /\.s[ac]ss$/,
                 use: sccLoaders("sass-loader"),
             },
-
             {
-                test: /\.(png|svg|jpg|jpeg|gif|ogg|mp3|wav)$/i,
+                test: /\.(png|jpe?g|webp|git|svg|)$/i,
+                use: [
+                    {
+                        loader: `img-optimize-loader`,
+                        options: {
+                            compress: {
+                                mode: 'high',
+                                webp: true,
+                                gifsicle: true,
+                                disableOnDevelopment: false
+                            }
+                        }
+                    },
+                ],
+            },
+            {
+                test: /\.(ogg|mp3|wav)$/i,
                 type: 'asset/resource',
             },
             // {
             //     test: /\.html$/i,
             //     loader: "html-loader",
             // },
- ]
+        ]
     },
     devServer: {
         static: path.join(__dirname, ''),
