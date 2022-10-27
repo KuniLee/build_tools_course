@@ -41,7 +41,7 @@ const config = {
         extensions: [".js", ".json", ".png"],
         alias: {
             "@images": path.resolve(__dirname, 'src/images'),
-            "@icons": path.resolve(__dirname, 'src/icons'),
+            "@audio": path.resolve(__dirname, 'src/audio'),
             "@": path.resolve(__dirname),
         },
     },
