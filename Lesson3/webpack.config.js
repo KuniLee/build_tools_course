@@ -73,7 +73,7 @@ const config = {
                 ],
             },
             {
-                test: /\.(ogg|mp3|wav)$/i,
+                test: /\.(ogg|mp3|wav|mp4)$/i,
                 type: 'asset/resource',
             },
             // {
