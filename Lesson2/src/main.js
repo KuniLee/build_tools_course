@@ -3,6 +3,8 @@ import {Timer} from "./timer.js";
 import {formatError} from "./utils.js";
 import {switcher} from "./switch.js"
 
+import chunk from "lodash/chunk";
+console.log(chunk(['a', 'b', 'c', 'd'], 2));
 
 const radioButtons = document.getElementById("switcher");
 const timerDiv = document.getElementById("timer");
