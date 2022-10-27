@@ -1,38 +1,71 @@
-const path = require("path");
+const path = require("path")
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require("clean-webpack-plugin")
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-
-const config = {
-    context: path.resolve(__dirname, ""),
-    mode: "development",
-    entry: {
-        main: "./src/main.js",
-    },
-    output: {
-        filename: "[name].[contenthash].js",
-        path: path.resolve(__dirname, "dist"),
-       assetModuleFilename: 'media/[hash][ext][query]',
-    },
-    optimization: {
-        usedExports: true,
-    },
-    plugins: [
+const thePlugins = () => {
+    return [
         new HTMLWebpackPlugin({
             inject: true,
             template: "./index.html",
             filename: `index.html`,
         }),
         new CleanWebpackPlugin(),
-        new BundleAnalyzerPlugin()
-    ],
+        new MiniCssExtractPlugin({
+            filename: "[name].[contenthash].css",
+        }),
+    ]
+}
+
+const sccLoaders = extra => {
+    const loaders = [MiniCssExtractPlugin.loader, "css-loader"]
+    if (extra) {
+        loaders.push(extra)
+    }
+    return loaders
+}
+
+const config = {
+    context: path.resolve(__dirname, ""),
+    mode: "development",
+    entry: {
+        main: "./index.js",
+    },
+    output: {
+        filename: "[name].[contenthash].js",
+        path: path.resolve(__dirname, "dist"),
+        assetModuleFilename: 'media/[hash][ext][query]',
+    },
+    resolve: {
+        extensions: [".js", ".json", ".png"],
+        alias: {
+            "@images": path.resolve(__dirname, 'src/images'),
+            "@icons": path.resolve(__dirname, 'src/icons'),
+            "@": path.resolve(__dirname),
+        },
+    },
+    plugins: thePlugins(),
     module: {
         rules: [
             {
+                test: /\.css$/,
+                use: sccLoaders(),
+            },
+            {
+                test: /\.s[ac]ss$/,
+                use: sccLoaders("sass-loader"),
+            },
+
+            {
                 test: /\.(png|svg|jpg|jpeg|gif|ogg|mp3|wav)$/i,
                 type: 'asset/resource',
-            },]
+            },
+            // {
+            //     test: /\.html$/i,
+            //     loader: "html-loader",
+            // },
+ ]
     },
     devServer: {
         static: path.join(__dirname, ''),
@@ -44,3 +77,4 @@ const config = {
 
 
 module.exports = config
+
